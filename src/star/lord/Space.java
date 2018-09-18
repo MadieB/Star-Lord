@@ -32,7 +32,7 @@ public class Space extends JPanel{
         super();
         marginX = 10;
         marginY = 10; 
-        hero = new Hero(600, 480, Color.RED, 20, "Peter Quill");
+        hero = new Hero(600, 480, Color.GREEN, 20, "Peter Quill");
         enemy = new Enemy(400, 400,Color.DARK_GRAY, 20,"Thanos");
         timer = new Timer();
         timer.scheduleAtFixedRate(new ScheduleTask(), 100, 100);
@@ -44,6 +44,8 @@ public class Space extends JPanel{
         
     @Override
    public void run(){
+     wallCollisions(hero);
+     wallCollisions(enemy);
       hero.update();
        enemy.update();
        repaint();
@@ -95,7 +97,7 @@ public class Space extends JPanel{
         drawStars(g);
        g.setColor(Color.LIGHT_GRAY);
         drawStars(g);
-        g.setColor(Color.GREEN);
+        g.setColor(Color.RED);
         drawStars(g);
         g.setColor(Color.ORANGE);
         drawStars(g);
@@ -118,7 +120,7 @@ public class Space extends JPanel{
         int y = 0;
     for (int i = 0; i < 1000; i++) {
           y = (int) (Math.random()*960);
-          x = (int) (Math.random()*1200);
+          x = (int) (Math.random()*1300);
           Color curr = g.getColor();
           if (x % 2 == 0) 
               g.setColor(curr.brighter());
@@ -130,6 +132,19 @@ public class Space extends JPanel{
            //if (x > 1100 || y > 860){
              //break;
             //}     
+        }
     }
+     /**
+     * Makes the hero and enemy bounce off walls
+     */    
+    private void wallCollisions(Character c) {
+        //walls - this.getWidth(), this.getHeight(), 0
+        //where the hero is - hero.getX(), hero.getY()
+        if (c.getX() <= 0 || c.getX() + 20 >= this.getWidth()){
+            c.reverseX();
+        }
+        if (c.getY() <= 0 || c.getY() + 20 >= this.getHeight()){
+            c.reverseY();
+        }
     }
 }

@@ -17,8 +17,8 @@ public class Character {
     //Fields (Variables)
     private int x;
     private int y;
-    private int dx;
-    private int dy;
+    private int dx;//velocity speed delta x
+    private int dy; //velocity speed delta y
     private Color color;
     private int size;
     private String name;
@@ -102,15 +102,15 @@ public class Character {
    }
     
     public void kill(){
-        
+        grow();
     }
     public void move(int dx, int dy){
         x += dx * 3;
-        y += dy * 3;  
+        y += dy * 3;    
     }
     public void update(){
         move(dx,dy);
-        //grow();
+        
     }
     /**
      * Makes the character "bounce" and reverse direction on x axis
@@ -118,11 +118,34 @@ public class Character {
   
     public void reverseX(){
         //TODO Implement this method
+        if ( x > 0)
+    {
+        x = + 1;    
+    }
+    else if ( x < 1300)
+    {
+        x= - 1;
+    }
+    this.x = x + x;
+    this.dx = dx + x;
     }
     /**
      * Makes the character "bounce" and reverse direction on Y axis
      */
-    public
+    public void reverseY(){
+        //TODO Implement this method
+         if ( y > 5)
+    {
+        y = - 1;    
+    }
+    else if ( y < -5)
+    {
+        y = + 1;
+    }
+    this.y = y + 1;
+    this.dy = dy + y;
+        }
+    
     //Private Methods
     private void grow(){
        size += 1;
