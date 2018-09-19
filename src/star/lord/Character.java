@@ -101,53 +101,34 @@ public class Character {
        g.fillRect(x,y,size,size);
    }
     
-    public void kill(){
-        grow();
+    public void kill(Character c){
+        /*grow();*/
+        c.setSize(0);
     }
     public void move(int dx, int dy){
-        x += dx * 3;
-        y += dy * 3;    
+        x += dx * 5;
+        y += dy * 5;    
     }
     public void update(){
         move(dx,dy);
         
     }
-    /**
-     * Makes the character "bounce" and reverse direction on x axis
-     */
+   
   
     public void reverseX(){
-        //TODO Implement this method
-        if ( x > 0)
-    {
-        x = + 1;    
+        
+        dx = - dx;
+        move(2 * dx, dy);
     }
-    else if ( x < 1300)
-    {
-        x= - 1;
-    }
-    this.x = x + x;
-    this.dx = dx + x;
-    }
-    /**
-     * Makes the character "bounce" and reverse direction on Y axis
-     */
-    public void reverseY(){
-        //TODO Implement this method
-         if ( y > 5)
-    {
-        y = - 1;    
-    }
-    else if ( y < -5)
-    {
-        y = + 1;
-    }
-    this.y = y + 1;
-    this.dy = dy + y;
-        }
     
+    public void reverseY(){
+        
+         dy *= -1;
+         move(dx, 2 * dy);
+    }
     //Private Methods
     private void grow(){
        size += 1;
+         y *= -1;
     }
 }

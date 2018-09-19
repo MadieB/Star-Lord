@@ -48,7 +48,28 @@ public class Hero extends Character {
     private void grow(){
        
     }
-    private void canTeleport(){
-        
+    private void canTeleport(int y, int x){
+        /*if ( x > 0)
+    {
+        x = + 1;    
     }
+    else if ( x < 1300)
+    {
+        x= - 1;
+    }
+    this.x = x + x;
+    this.dx = dx + x;
+        
+        if ( y > 5)
+    {
+        y = - 1;    
+    }
+    else if ( y < -5)
+    {
+        y = + 1;
+    }
+    this.y = y + 1;
+    this.dy = dy + y;*/
+        }
+    
 }

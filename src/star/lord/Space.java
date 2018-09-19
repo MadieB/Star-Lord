@@ -35,7 +35,7 @@ public class Space extends JPanel{
         hero = new Hero(600, 480, Color.GREEN, 20, "Peter Quill");
         enemy = new Enemy(400, 400,Color.DARK_GRAY, 20,"Thanos");
         timer = new Timer();
-        timer.scheduleAtFixedRate(new ScheduleTask(), 100, 100);
+        timer.scheduleAtFixedRate(new ScheduleTask(), 100, 50);
         
     }
 
@@ -46,35 +46,37 @@ public class Space extends JPanel{
    public void run(){
      wallCollisions(hero);
      wallCollisions(enemy);
+     heroVsEnemy();
       hero.update();
        enemy.update();
+       
        repaint();
    }
     }
    public void keyPressed(KeyEvent e) {
       
        if (e.getKeyCode() == KeyEvent.VK_W){
-           hero.setDX(3);
+           hero.setDY(-1);
        }
         else if (e.getKeyCode() == KeyEvent.VK_A){
-           hero.setDX(-3);
+           hero.setDX(-1);
        }
         else if (e.getKeyCode() == KeyEvent.VK_S){
-           hero.setDY(-3);
+           hero.setDY(1);
        }
        else if (e.getKeyCode() == KeyEvent.VK_D){
-           hero.setDY(3);
+           hero.setDX(1);
        }
    }
     public void keyReleased(KeyEvent e){
-       if  (e.getKeyCode() == KeyEvent.VK_RIGHT)
-            hero.setDX(0);
-        if (e.getKeyCode() == KeyEvent.VK_LEFT)
-            hero.setDX(0);
-        if (e.getKeyCode() == KeyEvent.VK_UP)
+       if  (e.getKeyCode() == KeyEvent.VK_W)
             hero.setDY(0);
-        if (e.getKeyCode() == KeyEvent.VK_DOWN)
+        if (e.getKeyCode() == KeyEvent.VK_A)
+            hero.setDX(0);
+        if (e.getKeyCode() == KeyEvent.VK_S)
             hero.setDY(0);
+        if (e.getKeyCode() == KeyEvent.VK_D)
+            hero.setDX(0);
     }
     @Override
     public void paintComponent(Graphics g) {
@@ -134,11 +136,18 @@ public class Space extends JPanel{
             //}     
         }
     }
-     /**
-     * Makes the hero and enemy bounce off walls
-     */    
+    
+    private void heroVsEnemy(){
+        //variables need: hero needs to know enemies info (location & size)
+        //where the enemy is - enemy.getX(), enemy.getY()
+        //has enemy and hero collided with one another
+        if (hero.getX() == enemy.getX() + 20 && hero.getY() == enemy.getY() + 20 ){
+        hero.kill(enemy);
+        }
+    }
+     
     private void wallCollisions(Character c) {
-        //walls - this.getWidth(), this.getHeight(), 0
+        //walls - this.getWidth(), this.getHeight(), 
         //where the hero is - hero.getX(), hero.getY()
         if (c.getX() <= 0 || c.getX() + 20 >= this.getWidth()){
             c.reverseX();
@@ -147,4 +156,5 @@ public class Space extends JPanel{
             c.reverseY();
         }
     }
+    
 }
