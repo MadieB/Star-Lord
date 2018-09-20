@@ -33,7 +33,6 @@ public class Character {
         color = Color.BLACK;
         size = 20;
         name = "enemy";
-        
     }
     
      public Character(int x, int y, Color color, int size, String name){
