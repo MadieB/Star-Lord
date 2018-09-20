@@ -141,7 +141,7 @@ public class Space extends JPanel{
         //variables need: hero needs to know enemies info (location & size)
         //where the enemy is - enemy.getX(), enemy.getY()
         //has enemy and hero collided with one another
-        if (hero.getX() + 20  == enemy.getX() && hero.getY() + 20 == enemy.getY() ){
+        if (hero.getX() + hero.getSize()  == enemy.getX() && hero.getY() + hero.getSize() == enemy.getY() ){
         hero.kill(enemy);
         enemy.setX(-2000);
         }
