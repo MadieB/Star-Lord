@@ -35,7 +35,7 @@ public class Space extends JPanel{
         hero = new Hero(600, 480, Color.GREEN, 20, "Peter Quill");
         enemy = new Enemy(400, 400,Color.DARK_GRAY, 20,"Thanos");
         timer = new Timer();
-        timer.scheduleAtFixedRate(new ScheduleTask(), 100, 50);
+        timer.scheduleAtFixedRate(new ScheduleTask(), 100, 1000/17);
         
     }
 
@@ -130,7 +130,7 @@ public class Space extends JPanel{
               g.setColor(curr.darker());
           g.fillOval(x, y, 3, 3);
           
-          System.out.println(x+" "+y);
+         
            //if (x > 1100 || y > 860){
              //break;
             //}     

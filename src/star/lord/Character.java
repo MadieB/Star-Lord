@@ -102,8 +102,9 @@ public class Character {
    }
     
     public void kill(Character c){
-        /*grow();*/
         c.setSize(0);
+        /*grow();*/
+        System.out.println("Enemy Killed");
     }
     public void move(int dx, int dy){
         x += dx * 5;
