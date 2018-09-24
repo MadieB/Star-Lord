@@ -41,7 +41,7 @@ public class Hero extends Character {
         
     }
     public void teleport(){
-        
+       
     }
     
     //Private Methods
