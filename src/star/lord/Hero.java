@@ -48,8 +48,9 @@ public class Hero extends Character {
     private void grow(){
        
     }
-    private void canTeleport(int y, int x){
-        /*if ( x > 0)
+    private void canTeleport(int y, int x, int dx, int dy){
+        
+        if ( x > 0)
     {
         x = + 1;    
     }
@@ -57,8 +58,8 @@ public class Hero extends Character {
     {
         x= - 1;
     }
-    this.x = x + x;
-    this.dx = dx + x;
+    super.setX(x + x) ;
+    super.setDX(dx + x) ;
         
         if ( y > 5)
     {
@@ -68,8 +69,8 @@ public class Hero extends Character {
     {
         y = + 1;
     }
-    this.y = y + 1;
-    this.dy = dy + y;*/
+    super.setX(y + 1) ;
+    super.setDY(dy + y) ;  
         }
     
 }

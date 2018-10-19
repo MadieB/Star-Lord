@@ -131,4 +131,5 @@ public class Character {
        size += 1;
          y *= -1;
     }
+    
 }
